@@ -1,0 +1,56 @@
+class Student:
+    def __init__(self, name, student_id):
+        self.name = name
+        self.student_id = student_id
+        self.grades = []
+
+    def add_grade(self, grade):
+        self.grades.append(grade)
+
+    def calculate_average(self):
+        return sum(self.grades) / len(self.grades)
+
+    def display_info(self):
+        print("Имя:", self.name)
+        print("ID:", self.student_id)
+        print("Средний балл:", self.calculate_average())
+
+
+class StudentManager:
+    def __init__(self):
+        self.students = []
+
+    def add_student(self, student):
+        self.students.append(student)
+
+    def display_all_students(self):
+        for s in self.students:
+            s.display_info()
+            print()
+
+    def get_top_student(self):
+        best = self.students[0]
+        for s in self.students:
+            if s.calculate_average() > best.calculate_average():
+                best = s
+        return best
+
+
+s1 = Student("Азим", 101)
+s1.add_grade(90)
+s1.add_grade(80)
+
+s2 = Student("Раиля", 102)
+s2.add_grade(70)
+s2.add_grade(60)
+
+manager = StudentManager()
+manager.add_student(s1)
+manager.add_student(s2)
+
+manager.display_all_students()
+
+top = manager.get_top_student()
+
+print("Лучший студент:")
+top.display_info()
