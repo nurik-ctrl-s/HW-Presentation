@@ -1,0 +1,31 @@
+class  Vehicle:
+    def __init__(self, brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+
+    def display_info(self):
+        long_name = f"{self.year} {self.brand} {self.model}"
+        return long_name.title()
+
+my_new_car = Vehicle('Kia', 'k5', 2020)
+print(my_new_car.display_info())        
+class  Car (Vehicle):
+    def __init__(self, brand, model, year, doors):
+        super().__init__(brand, model, year)
+        self.doors = doors
+
+    def display_info(self):
+        long_name = f"{self.year} {self.brand} {self.model} with {self.doors} doors"
+        return long_name.title()
+my_new_car = Car('Kia', 'k4', 2020, 4)
+print(my_new_car.display_info())
+class  Motorcycle (Vehicle):
+    def __init__(self, brand, model, year, type):
+        super().__init__(brand, model, year)
+        self.type = type
+    def display_info(self):
+        long_name = f"{self.year} {self.brand} {self.model} which is a {self.type}"
+        return long_name.title()
+my_new_motorcycle = Motorcycle('Dog Hudsun', 'Street 750', 2019, 'cruiser')    
+print(my_new_motorcycle.display_info())                                 
