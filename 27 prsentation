@@ -1,34 +1,39 @@
 from abc import ABC, abstractmethod
-class Employee (ABC):
-    @abstractmethod
+
+class Employee(ABC):
     def __init__(self, name, age, salary):
         self.name = name
         self.age = age
         self.salary = salary
+
     @abstractmethod
     def work(self):
         pass
+
     def display_info(self):
-        print(f"имя: {self.name}, Возраст: {self.age}, Зарплата: {self.salary}")
-    
+        print(f"Имя: {self.name}, Возраст: {self.age}, Зарплата: {self.salary}")
+
+
 class Manager(Employee):
     def __init__(self, name, age, salary, team_size):
-        super().__init__(name, age, salary, team_size)
+        super().__init__(name, age, salary)  # исправлено
         self.team_size = team_size
 
     def work(self):
-        print(f"{self.name} .")
-class Developer(Employee):  
+        print(f"{self.name} управляет командой из {self.team_size} человек")
+
+
+class Developer(Employee):
     def __init__(self, name, age, salary, programming_languages):
         super().__init__(name, age, salary)
         self.programming_languages = programming_languages
 
     def work(self):
-        print(f"{self.name} .") 
+        print(f"{self.name} пишет код на {', '.join(self.programming_languages)}")
 
 manager = Manager("Алиса", 35, 40000, 5)
 developer = Developer("Екатерина", 25, 100000, ["Python", "Frontend"])
 manager.display_info()
-manager.work()  
+manager.work()
 developer.display_info()
 developer.work()
