@@ -1,0 +1,28 @@
+library_books = {
+    "B001": {"title": "Основы Python", "borrower": "Алиса", "due_date": -5, "fine_rate": 0.50},
+    "B002": {"title": "Наука о данных", "borrower": "Боб", "due_date": 3, "fine_rate": 0.75},
+    "B003": {"title": "Введение в ИИ", "borrower": None, "due_date": 0, "fine_rate": 0.25},
+    "B004": {"title": "Алгоритмы", "borrower": "Алиса", "due_date": 2, "fine_rate": 1.00}
+}
+fines_summary={}
+print("Отчет по книгам")
+for library_books_id,info in library_books.items():
+    title = info["title"]
+    borrower = info["borrower"]
+    duo_date = info["duo_date"]
+    fine_rate = info["fine_rate"]
+    if borrower is None
+    status = "Доступно"
+    fine = 0
+    overdue_days = 0
+else: 
+    if duo_date <0:
+        status = "В срок"
+        fine = 0
+        overdue_days = 0
+    else:
+        status = "Просрочен"
+        fine = 0
+        fine=overdue_days*fine_rate
+        if status in library_books
+print()
