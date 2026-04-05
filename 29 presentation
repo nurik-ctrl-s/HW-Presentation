@@ -1,0 +1,28 @@
+import json
+class Student:
+    def __init__(self, id, name, age, grade):
+        self.id, self.name, self.age, self.grade = id, name, age, grade
+    def __str__(self):
+        return f"{self.id}, {self.name}, {self.age}, {self.grade}"
+FILENAME = "students.json"
+def save(students):
+    json.dump([s.__dict__ for s in students], open(FILENAME, "w", encoding="utf-8"), ensure_ascii=False, indent=4)
+def load():
+    try:
+        return [Student(**d) for d in json.load(open(FILENAME, "r", encoding="utf-8"))]
+    except:
+        return []
+students = load()
+while True:
+    choice = input("\n1.Добавить студента  2.Показать всех  3.Выход: ")
+    if choice == "1":
+        students.append(Student(input("ID: "), input("Имя: "), int(input("Возраст: ")), input("Оценка: ")))
+        print("Студент добавлен!")
+    elif choice == "2":
+        print(*students, sep="\n") if students else print("Список пуст.")
+    elif choice == "3":
+        save(students)
+        print("Данные сохранены. Выход.")
+        break
+    else:
+        print("Неверный выбор!")
